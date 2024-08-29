@@ -24,6 +24,7 @@ def calculate_entropy(probabilities):
     return entropy
 
 def main():
+    os.system('cls')
 #Validaciones---------------------------------------------------------------------
     if len(sys.argv) < 2:
         print("Error: ejecutar de la siguiente forma: python tp1.py filename.txt [N]")
@@ -138,11 +139,11 @@ def main():
                 # Imprime el vector estacionario y la entropia de la fuente
                 print("Vector estacionario:")
                 for i, char in enumerate(chars):
-                    print(f"π('{char}') = {stationary_vector[i, 0]:.4f}")
+                    print(f"π('{char}') = {stationary_vector[i, 0].real:.4f}")
                 log_values = np.where(transition_matrix > 0, transition_matrix * np.log2(1/transition_matrix), 0)
                 column_sums = np.sum(log_values, axis=1)
                 weighted_sums = np.dot(column_sums, stationary_vector)
-                resultado = float(weighted_sums[0])
+                resultado = (weighted_sums[0].real)
                 print(f"\nLa Entropia de la fuente es {resultado:.4f} bits")
 
     except Exception as e:
