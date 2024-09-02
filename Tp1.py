@@ -7,6 +7,8 @@ import numpy as np
 
 TOL=8e-2
 
+
+
 def calculate_entropy2(probabilities):
     """Calcula la entropía en base a probabilidades."""
     entropy = 0
@@ -32,7 +34,7 @@ def main():
     filename = sys.argv[1]
     n = None
     if len(sys.argv) == 3:
-        try:
+        try: 
             n = int(sys.argv[2])
             if n < 0:
                 raise ValueError("N debe ser un número natural (mayor o igual a 0).")
@@ -137,10 +139,13 @@ def main():
                 stationary_vector = stationary_vector / np.sum(stationary_vector)
 
                 # Imprime el vector estacionario y la entropia de la fuente
+
                 print("Vector estacionario:")
                 for i, char in enumerate(chars):
                     print(f"π('{char}') = {stationary_vector[i, 0].real:.4f}")
-                log_values = np.where(transition_matrix > 0, transition_matrix * np.log2(1/transition_matrix), 0)
+                non_zero_mask = transition_matrix > 0
+                log_values = np.zeros_like(transition_matrix)
+                log_values[non_zero_mask] = transition_matrix[non_zero_mask] * np.log2(1/transition_matrix[non_zero_mask])
                 column_sums = np.sum(log_values, axis=1)
                 weighted_sums = np.dot(column_sums, stationary_vector)
                 resultado = (weighted_sums[0].real)
