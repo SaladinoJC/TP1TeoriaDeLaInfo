@@ -21,6 +21,6 @@ def filter_and_process_file(input_file, output_file):
     print(f"Se ha procesado el archivo y el nuevo archivo se guardó como {output_file}.")
 
 if __name__ == "__main__":
-    input_file = 'bible.txt'  # Reemplaza con el nombre de tu archivo de entrada
-    output_file = 'filtered_bible.txt'  # Reemplaza con el nombre que quieras para tu archivo de salida
+    input_file = 'swedish.txt'  # Reemplaza con el nombre de tu archivo de entrada
+    output_file = 'filtered_swedish.txt'  # Reemplaza con el nombre que quieras para tu archivo de salida
     filter_and_process_file(input_file, output_file)
